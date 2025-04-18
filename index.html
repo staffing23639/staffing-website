@@ -13,58 +13,71 @@
   <meta property="og:description" content="Get skilled, affordable gig workers for your startup. Short-term staffing made simple." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://innovativestaffingsolutions.online" />
-  <meta property="og:image" content="logo.png.jpg" />
+  <meta property="og:image" content="logo.png.jpg" /> <!-- Fixed the logo path -->
 
   <!-- Fonts & Tailwind -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3" defer></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 
   <style>
     body { font-family: 'Inter', sans-serif; }
     html { scroll-behavior: smooth; }
-    @keyframes rgbFlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+
+    /* Light Mode */
+    body {
+      background-color: white;
+      color: black;
     }
-    .animate-rgb-text {
-      background-size: 300% 300%;
-      animation: rgbFlow 6s ease infinite;
+
+    /* Dark Mode */
+    body.dark {
+      background-color: #121212;
+      color: white;
     }
-    .whatsapp-float {
+
+    /* Smooth RGB Text Animation */
+    h1 {
+      background: linear-gradient(90deg, rgba(255, 0, 150, 1) 0%, rgba(0, 204, 255, 1) 100%);
+      background-size: 200% auto;
+      animation: gradient 3s ease infinite;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 200% center;
+      }
+      50% {
+        background-position: 0 center;
+      }
+      100% {
+        background-position: 200% center;
+      }
+    }
+
+    /* Floating WhatsApp Button */
+    .whatsapp-btn {
       position: fixed;
       bottom: 20px;
       right: 20px;
       background-color: #25D366;
       color: white;
       border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 30px;
+      padding: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      font-size: 24px;
       z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
+
   </style>
 </head>
 
-<body class="bg-white text-black" x-data="{ dark: false }" :class="dark ? 'dark bg-gray-900 text-white' : ''">
-  <!-- Dark Mode Toggle -->
-  <div class="fixed top-4 right-4">
-    <button @click="dark = !dark" class="p-2 bg-gray-200 dark:bg-gray-800 rounded-full text-sm">
-      Toggle {{ dark ? 'Light' : 'Dark' }} Mode
-    </button>
-  </div>
-
+<body class="bg-white text-black">
   <!-- Hero Section -->
   <section class="text-center py-20 bg-black text-white">
-    <img src="logo.jpg" alt="Innovative Staffing Solutions Logo" class="mx-auto w-28 h-28 mb-6">
-    <h1 class="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-red-400 via-green-400 to-blue-500 bg-clip-text text-transparent animate-rgb-text">Innovative Staffing Solutions</h1>
+    <img src="logo.png" alt="Innovative Staffing Solutions Logo" class="mx-auto w-28 h-28 mb-6">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">Innovative Staffing Solutions</h1>
     <p class="text-lg md:text-2xl mb-6">Flexible. Affordable. Built for Startups.</p>
     <a href="#contact" class="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition">Get Started</a>
   </section>
@@ -92,73 +105,66 @@
     </div>
   </section>
 
-  <!-- Testimonials -->
-  <section class="py-16 px-4 sm:px-6 bg-white">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-semibold mb-8 text-center">What Our Clients Say</h2>
-      <div class="testimonial-slider">
-        <div>
-          <p class="text-lg italic">"Fast, professional, and reliable! Helped us during our product launch flawlessly."</p>
-          <p class="font-semibold mt-2">— Wipro Project Manager</p>
-        </div>
-        <div>
-          <p class="text-lg italic">"Their student workforce is sharp and full of energy. Great experience!"</p>
-          <p class="font-semibold mt-2">— Exotic India</p>
-        </div>
-        <div>
-          <p class="text-lg italic">"Responsive, skilled, and budget-friendly. What else do you need?"</p>
-          <p class="font-semibold mt-2">— Mars International</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why Choose Us -->
-  <section class="py-16 px-4 sm:px-6 max-w-4xl mx-auto">
-    <h2 class="text-3xl font-semibold mb-8">Why Choose Innovative Staffing?</h2>
-    <div class="grid md:grid-cols-2 gap-8 text-lg text-gray-700">
-      <div>
-        <h3 class="font-bold">Speed & Flexibility</h3>
-        <p>Get pre-vetted, job-ready workers on your team in hours, not weeks. Our process is built for startup timelines.</p>
-      </div>
-      <div>
-        <h3 class="font-bold">Skilled Student Talent</h3>
-        <p>We connect you with emerging professionals eager to contribute — cost-effective, trainable, and motivated.</p>
-      </div>
-      <div>
-        <h3 class="font-bold">Budget-Friendly Staffing</h3>
-        <p>Maximize your hiring ROI without compromising on quality. Ideal for lean teams and fast-growing firms.</p>
-      </div>
-      <div>
-        <h3 class="font-bold">Proven Industry Experience</h3>
-        <p>Our team has led audits and projects for brands like Wipro, Exotic, and Mars International — we know what quality looks like.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- Contact Section -->
   <section id="contact" class="bg-gray-100 py-16 px-4 sm:px-6">
     <div class="max-w-4xl mx-auto">
       <h2 class="text-3xl font-semibold mb-10 text-center">Connect With Us</h2>
       <div class="grid md:grid-cols-2 gap-10">
+        
+        <!-- Team Up Request Form -->
         <div>
           <h3 class="text-xl font-semibold mb-2">Team Up with Us</h3>
           <p class="text-gray-600 mb-4 text-sm">Need short-term talent? Submit your staffing requirements and we’ll get back to you within 24 hours.</p>
           <iframe src="https://tally.so/r/mZQMYy" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
+
+        <!-- Hustle Buddy Form -->
         <div>
           <h3 class="text-xl font-semibold mb-2">Become a Hustle Buddy</h3>
           <p class="text-gray-600 mb-4 text-sm">Ready to work on exciting short-term projects? Join our team of gig professionals.</p>
           <iframe src="https://tally.so/r/meoV2O" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- WhatsApp Button -->
-  <a href="https://wa.me/918999999999" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
-    💬
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/7821929953" target="_blank" class="whatsapp-btn">
+    <i class="fab fa-whatsapp"></i>
   </a>
+
+  <!-- Dark Mode Toggle -->
+  <button id="dark-mode-toggle" class="bg-black text-white p-2 rounded mt-4 ml-4">
+    Toggle Dark Mode
+  </button>
+
+  <script>
+    // Check localStorage for saved theme preference
+    const storedTheme = localStorage.getItem('theme');
+    const body = document.body;
+    const toggleButton = document.getElementById('dark-mode-toggle');
+
+    // Apply the stored theme if exists, else default to light mode
+    if (storedTheme === 'dark') {
+      body.classList.add('dark');
+      toggleButton.textContent = 'Light Mode';
+    } else {
+      body.classList.remove('dark');
+      toggleButton.textContent = 'Dark Mode';
+    }
+
+    // Toggle theme on button click
+    toggleButton.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      // Save the theme to localStorage
+      const theme = body.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', theme);
+
+      // Change button text based on the current theme
+      toggleButton.textContent = body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+    });
+  </script>
 
   <!-- Footer -->
   <footer class="text-center py-6 text-sm text-gray-600 bg-white">
@@ -166,19 +172,5 @@
     <p>&copy; 2025 Innovative Staffing Solutions. All rights reserved.</p>
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-  <script>
-    $(document).ready(function(){
-      $('.testimonial-slider').slick({
-        autoplay: true,
-        arrows: false,
-        dots: true,
-        speed: 1000,
-        autoplaySpeed: 5000,
-      });
-    });
-  </script>
 </body>
 </html>

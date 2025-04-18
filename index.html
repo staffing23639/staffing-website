@@ -13,43 +13,60 @@
   <meta property="og:description" content="Get skilled, affordable gig workers for your startup. Short-term staffing made simple." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://innovativestaffingsolutions.online" />
-  <meta property="og:image" content="logo.png.jpg" />
+  <meta property="og:image" content="logo.jpg" />
 
   <!-- Fonts & Tailwind -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 
   <style>
     body { font-family: 'Inter', sans-serif; }
     html { scroll-behavior: smooth; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes rgbFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-    .animate-fadeIn {
-      animation: fadeIn 1s ease forwards;
+    .animate-rgb-text {
+      background-size: 300% 300%;
+      animation: rgbFlow 6s ease infinite;
     }
-    .delay-200 {
-      animation-delay: 0.2s;
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
   </style>
 </head>
 
-<body class="bg-white text-black">
+<body class="bg-white text-black" x-data="{ dark: false }" :class="dark ? 'dark bg-gray-900 text-white' : ''">
+  <!-- Dark Mode Toggle -->
+  <div class="fixed top-4 right-4">
+    <button @click="dark = !dark" class="p-2 bg-gray-200 dark:bg-gray-800 rounded-full text-sm">
+      Toggle {{ dark ? 'Light' : 'Dark' }} Mode
+    </button>
+  </div>
+
   <!-- Hero Section -->
-  <section class="relative text-center py-24 px-4 bg-black text-white overflow-hidden">
-    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-purple-500 via-pink-500 to-yellow-500 opacity-20 rounded-full blur-3xl z-0"></div>
-    <div class="relative z-10">
-      <img src="logo.png.jpg" alt="Innovative Staffing Solutions Logo" class="mx-auto w-28 h-28 mb-6 drop-shadow-lg">
-      <h1 class="text-4xl md:text-6xl font-extrabold mb-4 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 bg-clip-text text-transparent animate-fadeIn">
-        Innovative Staffing Solutions
-      </h1>
-      <p class="text-lg md:text-2xl mb-6 text-gray-200 animate-fadeIn delay-200">Flexible. Affordable. Built for Startups.</p>
-      <a href="#contact" class="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition shadow-lg hover:scale-105 duration-200 inline-block">
-        🚀 Get Started
-      </a>
-    </div>
+  <section class="text-center py-20 bg-black text-white">
+    <img src="logo.jpg" alt="Innovative Staffing Solutions Logo" class="mx-auto w-28 h-28 mb-6">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-red-400 via-green-400 to-blue-500 bg-clip-text text-transparent animate-rgb-text">Innovative Staffing Solutions</h1>
+    <p class="text-lg md:text-2xl mb-6">Flexible. Affordable. Built for Startups.</p>
+    <a href="#contact" class="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition">Get Started</a>
   </section>
 
   <!-- About Us -->
@@ -61,31 +78,36 @@
   <!-- Services -->
   <section class="bg-gray-100 py-16 px-4 sm:px-6">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-semibold mb-8 text-center">What We Offer</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-md transition">
-          <h3 class="font-bold text-xl mb-2">🚨 On-Demand Gig Workers</h3>
-          <p>Get reliable workers for urgent roles, fast.</p>
+      <h2 class="text-3xl font-semibold mb-4">What We Offer</h2>
+      <ul class="list-disc list-inside text-lg text-gray-800 space-y-2">
+        <li>On-demand gig workers for urgent roles</li>
+        <li>Custom recruitment for sprints & launches</li>
+        <li>Temporary teams for events, audits, or campaigns</li>
+        <li>Cost-efficient hiring for short-term projects</li>
+        <li>End-to-end team management and coordination</li>
+        <li>Student-led workforce for fresh perspectives</li>
+        <li>Workforce planning to optimize your budget</li>
+        <li>Quality-checked talent with industry exposure</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 px-4 sm:px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-semibold mb-8 text-center">What Our Clients Say</h2>
+      <div class="testimonial-slider">
+        <div>
+          <p class="text-lg italic">"Fast, professional, and reliable! Helped us during our product launch flawlessly."</p>
+          <p class="font-semibold mt-2">— Wipro Project Manager</p>
         </div>
-        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-md transition">
-          <h3 class="font-bold text-xl mb-2">🚀 Sprint & Launch Support</h3>
-          <p>Custom staffing for critical business phases.</p>
+        <div>
+          <p class="text-lg italic">"Their student workforce is sharp and full of energy. Great experience!"</p>
+          <p class="font-semibold mt-2">— Exotic India</p>
         </div>
-        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-md transition">
-          <h3 class="font-bold text-xl mb-2">🎯 Temporary Event Teams</h3>
-          <p>Professionals for events, audits, or campaigns.</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-md transition">
-          <h3 class="font-bold text-xl mb-2">💸 Budget-Friendly Hiring</h3>
-          <p>High-impact talent for short-term projects.</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-md transition">
-          <h3 class="font-bold text-xl mb-2">📋 End-to-End Management</h3>
-          <p>We handle coordination and delivery.</p>
-        </div>
-        <div class="bg-white p-6 rounded-2xl shadow hover:shadow-md transition">
-          <h3 class="font-bold text-xl mb-2">🎓 Student-Led Workforce</h3>
-          <p>Fresh talent with enthusiasm and ideas.</p>
+        <div>
+          <p class="text-lg italic">"Responsive, skilled, and budget-friendly. What else do you need?"</p>
+          <p class="font-semibold mt-2">— Mars International</p>
         </div>
       </div>
     </div>
@@ -93,22 +115,22 @@
 
   <!-- Why Choose Us -->
   <section class="py-16 px-4 sm:px-6 max-w-4xl mx-auto">
-    <h2 class="text-3xl font-semibold mb-8 text-center">Why Choose Innovative Staffing?</h2>
+    <h2 class="text-3xl font-semibold mb-8">Why Choose Innovative Staffing?</h2>
     <div class="grid md:grid-cols-2 gap-8 text-lg text-gray-700">
-      <div class="p-6 bg-white rounded-xl shadow hover:shadow-md transition">
-        <h3 class="font-bold">⚡ Speed & Flexibility</h3>
+      <div>
+        <h3 class="font-bold">Speed & Flexibility</h3>
         <p>Get pre-vetted, job-ready workers on your team in hours, not weeks. Our process is built for startup timelines.</p>
       </div>
-      <div class="p-6 bg-white rounded-xl shadow hover:shadow-md transition">
-        <h3 class="font-bold">👩‍🎓 Skilled Student Talent</h3>
+      <div>
+        <h3 class="font-bold">Skilled Student Talent</h3>
         <p>We connect you with emerging professionals eager to contribute — cost-effective, trainable, and motivated.</p>
       </div>
-      <div class="p-6 bg-white rounded-xl shadow hover:shadow-md transition">
-        <h3 class="font-bold">💰 Budget-Friendly Staffing</h3>
+      <div>
+        <h3 class="font-bold">Budget-Friendly Staffing</h3>
         <p>Maximize your hiring ROI without compromising on quality. Ideal for lean teams and fast-growing firms.</p>
       </div>
-      <div class="p-6 bg-white rounded-xl shadow hover:shadow-md transition">
-        <h3 class="font-bold">🏆 Proven Industry Experience</h3>
+      <div>
+        <h3 class="font-bold">Proven Industry Experience</h3>
         <p>Our team has led audits and projects for brands like Wipro, Exotic, and Mars International — we know what quality looks like.</p>
       </div>
     </div>
@@ -119,29 +141,44 @@
     <div class="max-w-4xl mx-auto">
       <h2 class="text-3xl font-semibold mb-10 text-center">Connect With Us</h2>
       <div class="grid md:grid-cols-2 gap-10">
-
-        <!-- Team Up Request Form -->
         <div>
           <h3 class="text-xl font-semibold mb-2">Team Up with Us</h3>
           <p class="text-gray-600 mb-4 text-sm">Need short-term talent? Submit your staffing requirements and we’ll get back to you within 24 hours.</p>
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScV3hofAZaglFc4BJy9vMIY6Y_iuRbz-gsm6OSmACyqrnrb0A/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          <iframe src="https://tally.so/r/mZQMYy" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
-
-        <!-- Hustle Buddy Form -->
         <div>
           <h3 class="text-xl font-semibold mb-2">Become a Hustle Buddy</h3>
           <p class="text-gray-600 mb-4 text-sm">Ready to work on exciting short-term projects? Join our team of gig professionals.</p>
-          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScy41MH__rRrVNso3n_NIwPzXPBb2gr-DPFtULQe6eQd0SHJA/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+          <iframe src="https://tally.so/r/meoV2O" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
-
       </div>
     </div>
   </section>
+
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/918999999999" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    💬
+  </a>
 
   <!-- Footer -->
   <footer class="text-center py-6 text-sm text-gray-600 bg-white">
     <p>📩 Reach us at <a href="mailto:kaifkhan@innovativestaffingsolutions.online" class="underline">kaifkhan@innovativestaffingsolutions.online</a></p>
     <p>&copy; 2025 Innovative Staffing Solutions. All rights reserved.</p>
   </footer>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.testimonial-slider').slick({
+        autoplay: true,
+        arrows: false,
+        dots: true,
+        speed: 1000,
+        autoplaySpeed: 5000,
+      });
+    });
+  </script>
 </body>
 </html>
